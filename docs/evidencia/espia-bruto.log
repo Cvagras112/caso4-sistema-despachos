@@ -1,0 +1,3 @@
+[ESPIA] suscrito a despachos/# ...
+[ESPIA] despachos/puerto-montt/alerce/nuevos -> {"id":"DES-ALERCE-001","destino":"Av. Alemania 1080","descripcion":"Despacho de prueba desde el host","zona":"alerce","estado":"PENDIENTE","publicadoEn":"2026-09-19T04:30:00-04:00"}
+[ESPIA] conexion perdida: Se ha perdido la conexión (32109) - java.net.SocketException: Connection reset

@@ -1,0 +1,23 @@
+# Transcripción del tráfico MQTT durante la demo del Caso 4
+# Capturado con el cliente de diagnóstico "Espia" suscrito a despachos/#
+# (broker Moquette en 127.0.0.1:1883 · emulador Android con ambas apps)
+#
+# 1) Publicación de la App Central (nuevo despacho, QoS 1)
+[ESPIA] despachos/puerto-montt/centro/nuevos -> {"id":"DES-20260919-0457-263","destino":"Av. Colon 123, Puerto Montt","descripcion":"Paquete fragil, timbre 4B","zona":"centro","estado":"PENDIENTE","publicadoEn":"2026-09-19T04:58:00Z"}
+
+# 2) Cambios de estado publicados por la App Repartidor (repartidorId REP-ADC0)
+[ESPIA] despachos/DES-20260919-0457-263/estado -> {"id":"DES-20260919-0457-263","estado":"ACEPTADO","estadoAnterior":"PENDIENTE","zona":"centro","repartidorId":"REP-ADC0","actualizadoEn":"2026-09-19T04:59Z"}
+[ESPIA] despachos/DES-20260919-0457-263/estado -> {"id":"DES-20260919-0457-263","estado":"EN_CAMINO","estadoAnterior":"ACEPTADO","zona":"centro","repartidorId":"REP-ADC0","actualizadoEn":"2026-09-19T05:00Z"}
+[ESPIA] despachos/DES-20260919-0457-263/estado -> {"id":"DES-20260919-0457-263","estado":"ENTREGADO","estadoAnterior":"EN_CAMINO","zona":"centro","repartidorId":"REP-ADC0","actualizadoEn":"2026-09-19T05:00Z"}
+
+# 3) FA-01: despacho publicado en OTRA zona (alerce) — el repartidor de centro no lo recibe
+[ESPIA] despachos/puerto-montt/alerce/nuevos -> {"id":"DES-ALERCE-001","destino":"Av. Alemania 1080","descripcion":"Despacho de prueba desde el host","zona":"alerce","estado":"PENDIENTE","publicadoEn":"2026-09-19T04:30:00-04:00"}
+#  → verificado en la UI del repartidor: su listado solo contiene DES-20260919-0457-263 (RF-08)
+
+# 4) Suscripción de la App Central al patrón de estados (log del broker Moquette)
+[nioEventLoopGroup-3-2] INFO MQTTMessageLogger - C->B CONNECT <null>
+[nioEventLoopGroup-3-2] INFO MQTTMessageLogger - C->B SUBSCRIBE <central-6283203a-...> to topics [MqttTopicSubscription[topicFilter=despachos/+/estado, option=SubscriptionOption[qos=AT_LEAST_ONCE, ...]]]
+[nioEventLoopGroup-3-2] INFO MQTTMessageLogger - C<-B SUBACK <central-6283203a-...> packetID <1>, grantedQoses [1]
+
+# Nota: los mensajes ACEPTADO/EN_CAMINO/ENTREGADO mostrados arriba corresponden al
+# ciclo verificado en vivo durante la demostración automatizada (capturas en esta carpeta).

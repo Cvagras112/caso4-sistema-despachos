@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primario">#6C4CE0</color>
+    <color name="primario_oscuro">#3F2FA8</color>
+    <color name="fondo">#F4F2FA</color>
+    <color name="superficie">#FFFFFF</color>
+    <color name="texto_principal">#1D1B20</color>
+    <color name="texto_secundario">#5B5766</color>
+
+    <color name="estado_pendiente">#F59E0B</color>
+    <color name="estado_aceptado">#3B82F6</color>
+    <color name="estado_en_camino">#8B5CF6</color>
+    <color name="estado_entregado">#22C55E</color>
+</resources>

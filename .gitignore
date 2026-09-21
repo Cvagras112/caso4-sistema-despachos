@@ -1,0 +1,8 @@
+# Artefactos de compilación
+**/.gradle/
+**/build/
+.idea/
+*.iml
+local.properties
+broker-salida.log
+STOP
