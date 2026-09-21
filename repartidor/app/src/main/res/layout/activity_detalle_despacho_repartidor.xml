@@ -139,5 +139,13 @@
             android:layout_marginTop="8dp"
             android:text="Confirmar entrega" />
 
+        <Button
+            android:id="@+id/btnVolverInicio"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Volver al inicio" />
+
     </LinearLayout>
 </ScrollView>

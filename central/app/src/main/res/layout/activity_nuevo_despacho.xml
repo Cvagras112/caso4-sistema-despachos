@@ -86,4 +86,12 @@
         android:layout_marginTop="8dp"
         android:text="Cancelar" />
 
+    <Button
+        android:id="@+id/btnVolverInicio"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Volver al inicio" />
+
 </LinearLayout>

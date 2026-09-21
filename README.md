@@ -187,6 +187,15 @@ allow_anonymous true
 mosquitto_sub -h 127.0.0.1 -t "despachos/#" -v
 ```
 
+**Opción A — Mosquitto (recomendada, y la usada en la demostración final):** instalado en
+`C:\Program Files\mosquitto\`. Configuración de demo en
+`%TEMP%\mosquitto-demo.conf` (`listener 1883 0.0.0.0` + `allow_anonymous true`):
+
+```powershell
+# Ejecutar el broker
+"C:\Program Files\mosquitto\mosquitto.exe" -c "%TEMP%\mosquitto-demo.conf"
+```
+
 **Opción B — broker incluido (Moquette, sin instalar nada):** el proyecto incluye un
 broker MQTT en Java puro listo para la demo (carpeta `broker/`). Solo requiere JDK 17:
 
@@ -211,6 +220,15 @@ java -cp "broker\build\install\broker\lib\*" Espia
 java -cp "broker\build\install\broker\lib\*" PublicaPrueba centro DES-TEST-001
 java -cp "broker\build\install\broker\lib\*" PublicaPrueba alerce DES-ALERCE-001   # FA-01: otra zona
 ```
+
+**Navegación con Atrás y botón "Volver al inicio":** en ambas apps, el botón de retroceso
+de Android **y** el botón visible "Volver al inicio" llevan siempre al menú principal
+(Central → P-CE01, Repartidor → P-RE01), desde cualquier pantalla secundaria,
+limpiando la pila (`FLAG_ACTIVITY_CLEAR_TOP | FLAG_ACTIVITY_SINGLE_TOP`).
+
+**Broker usado en producción/demo:** Eclipse **Mosquitto 2.0.18** (el flujo completo
+PENDIENTE→ACEPTADO→EN_CAMINO→ENTREGADO se verificó en vivo a través de Mosquitto).
+Moquette queda como alternativa portátil.
 
 > Nota: en este equipo el proyecto vive dentro de OneDrive; `app/build.gradle` de ambas
 > apps redirige la carpeta de compilación a `%TEMP%` porque OneDrive bloquea los archivos

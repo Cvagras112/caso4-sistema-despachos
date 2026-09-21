@@ -42,4 +42,12 @@
         android:visibility="gone"
         android:textSize="14sp" />
 
+    <Button
+        android:id="@+id/btnVolverInicio"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Volver al inicio" />
+
 </LinearLayout>

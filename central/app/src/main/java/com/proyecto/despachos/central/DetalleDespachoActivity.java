@@ -2,6 +2,7 @@ package com.proyecto.despachos.central;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,8 @@ public class DetalleDespachoActivity extends AppCompatActivity implements Reposi
             Toast.makeText(this, "El despacho ya no está en el listado.", Toast.LENGTH_SHORT).show();
             finish();
         }
+        Button btnVolverInicio = findViewById(R.id.btnVolverInicio);
+        btnVolverInicio.setOnClickListener(v -> volverAlMenuPrincipal());
     }
 
     @Override
@@ -62,6 +65,11 @@ public class DetalleDespachoActivity extends AppCompatActivity implements Reposi
     /** El botón de retroceso siempre lleva al menú principal (P-CE01). */
     @Override
     public void onBackPressed() {
+        volverAlMenuPrincipal();
+    }
+
+    /** Regresa al menú principal (P-CE01) limpiando la pila. */
+    private void volverAlMenuPrincipal() {
         Intent menu = new Intent(this, MainActivity.class);
         menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(menu);

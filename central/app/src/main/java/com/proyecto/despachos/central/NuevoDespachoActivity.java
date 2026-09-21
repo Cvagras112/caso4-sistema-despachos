@@ -51,6 +51,8 @@ public class NuevoDespachoActivity extends AppCompatActivity {
 
         btnPublicar.setOnClickListener(v -> publicarDespacho());
         btnCancelar.setOnClickListener(v -> volverAlMenuPrincipal());
+        Button btnVolverInicio = findViewById(R.id.btnVolverInicio);
+        btnVolverInicio.setOnClickListener(v -> volverAlMenuPrincipal());
     }
 
     /** El botón de retroceso siempre lleva al menú principal (P-CE01). */

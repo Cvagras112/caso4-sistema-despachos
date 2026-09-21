@@ -60,6 +60,9 @@ public class DetalleDespachoActivity extends AppCompatActivity implements Reposi
         btnAceptar.setOnClickListener(v -> avanzarEstado(Estado.ACEPTADO));
         btnIniciarRuta.setOnClickListener(v -> avanzarEstado(Estado.EN_CAMINO));
         btnConfirmarEntrega.setOnClickListener(v -> avanzarEstado(Estado.ENTREGADO));
+
+        Button btnVolverInicio = findViewById(R.id.btnVolverInicio);
+        btnVolverInicio.setOnClickListener(v -> volverAlMenuPrincipal());
     }
 
     @Override
@@ -121,6 +124,11 @@ public class DetalleDespachoActivity extends AppCompatActivity implements Reposi
     /** El botón de retroceso siempre lleva al menú principal (P-RE01). */
     @Override
     public void onBackPressed() {
+        volverAlMenuPrincipal();
+    }
+
+    /** Regresa al menú principal (P-RE01) limpiando la pila. */
+    private void volverAlMenuPrincipal() {
         Intent menu = new Intent(this, ConexionActivity.class);
         menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(menu);

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +64,17 @@ public class ListaDespachosActivity extends AppCompatActivity implements Reposit
             startActivity(detalle);
         });
         rvDespachos.setAdapter(adaptador);
+
+        Button btnVolverInicio = findViewById(R.id.btnVolverInicio);
+        btnVolverInicio.setOnClickListener(v -> volverAlMenuPrincipal());
+    }
+
+    /** Regresa al menú principal (P-RE01) limpiando la pila. */
+    private void volverAlMenuPrincipal() {
+        Intent menu = new Intent(this, ConexionActivity.class);
+        menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(menu);
+        finish();
     }
 
     @Override
@@ -87,10 +99,7 @@ public class ListaDespachosActivity extends AppCompatActivity implements Reposit
     /** El botón de retroceso siempre lleva al menú principal (P-RE01). */
     @Override
     public void onBackPressed() {
-        Intent menu = new Intent(this, ConexionActivity.class);
-        menu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(menu);
-        finish();
+        volverAlMenuPrincipal();
     }
 
     @Override
